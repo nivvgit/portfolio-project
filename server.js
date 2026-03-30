@@ -8,12 +8,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "nived",
-    password: "tiger",
-    database: "portfolio_db"
+    host: process.env.MYSQLHOST,
+    user: process.env.MYSQLUSER,
+    password: process.env.MYSQLPASSWORD,
+    database: process.env.MYSQLDATABASE,
+    port: process.env.MYSQLPORT
 });
-
 db.connect(err => {
     if (err) throw err;
     console.log("Database Connected!");
